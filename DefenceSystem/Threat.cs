@@ -25,7 +25,7 @@ namespace DefenceSystem
                 Console.WriteLine("Attack severity is below the threshold. Attack is ignored");
             }
 
-            DefenceStrategiesNode defenceNode = tree.FindDefence(severity);
+            DefenceStrategiesNode defenceNode = tree.FindDefence(tree.Root, severity);
             if (defenceNode == null)
             {
                 Console.WriteLine("No suitable defence was found. Brace for impact!");

@@ -21,10 +21,10 @@ namespace DefenceSystem
             }
             return defenceStrategiesBST;
         }
-        public static DtoThreats ReadThreats()
+        public static List<Threat> ReadThreats()
         {
             var json = File.ReadAllText("C:\\Users\\adler\\source\\repos\\DefenceSystem\\DefenceSystem\\Threts.json");
-            var threatsArray = System.Text.Json.JsonSerializer.Deserialize<DtoThreats>(json);
+            List<Threat> threatsArray = System.Text.Json.JsonSerializer.Deserialize<List<Threat>>(json);
             return threatsArray;
         }
 

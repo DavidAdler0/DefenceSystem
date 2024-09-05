@@ -35,26 +35,24 @@ namespace DefenceSystem
         }
         public void PreOrderTraversal(DefenceStrategiesNode node)
         {
-
-
-
             if (node == null)
                 return;
-            Console.WriteLine("|-- Left ");
-            PreOrderTraversal(node.Left);
+
             Console.Write($"child: [{node.MinSeverity}-{node.MaxSeverity}] defenses: {node.Defenses[0]}");
             for (int i = 1; i < node.Defenses.Length; i++)
             {
                 Console.Write($", {node.Defenses[i]}");
             }
+            Console.WriteLine("|-- Left ");
+            PreOrderTraversal(node.Left);
             Console.WriteLine("|-- Right ");
             PreOrderTraversal(node.Right);
-            
+
+
 
         }
         public void PrintDefenceStrategiesBST()
         {
-            
             Console.WriteLine("Tree structure with left/right child distinctions:");
             Console.Write($"Root: [{Root.MinSeverity}-{Root.MaxSeverity}] defenses: {Root.Defenses[0]}");
             for (int i = 1; i < Root.Defenses.Length; i++)
@@ -63,10 +61,10 @@ namespace DefenceSystem
 
             }
             Console.WriteLine("");
-            Console.Write(" |-- Left ");
+            Console.Write("|-- Left ");
             PreOrderTraversal(Root.Left);
             Console.WriteLine();
-            Console.Write(" |-- Right ");
+            Console.Write("|-- Right ");
             PreOrderTraversal(Root.Right);
             Console.WriteLine();
         }
@@ -89,10 +87,7 @@ namespace DefenceSystem
             
 
         }
-        public DefenceStrategiesNode FindDefence(int severity)
-        {
-            return FindDefence(Root, severity);
-        }
+
         public int FindMin()
         {
             DefenceStrategiesNode minNode = Root;
