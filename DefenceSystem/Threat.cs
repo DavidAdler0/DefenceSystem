@@ -12,12 +12,15 @@ namespace DefenceSystem
         public int Volume { get; set; }
         public int Sophistication { get; set; }
         public string Target { get; set; }
+        
         public void RunThreat(DefenceStrategiesBST tree)
         {
-            int severity = CalculateSeverity();
-            Console.WriteLine("Calculating severity");
+            Console.WriteLine($"Calculating severity of threat type {this.ThreatType}");
             Task.Delay(4000).Wait();
+            int severity = CalculateSeverity(this);
 
+            Console.WriteLine($"Runing Defence for threat with severity {severity}");
+            Task.Delay(4000).Wait();
 
             int min = tree.FindMin();
             if (severity < min)
@@ -37,8 +40,6 @@ namespace DefenceSystem
                     Console.WriteLine(defence);
                     Task.Delay(2000).Wait();
                 }
-                Console.WriteLine("Runing Defence");
-                Task.Delay(4000).Wait();
 
             }
 
@@ -46,7 +47,7 @@ namespace DefenceSystem
 
         }
 
-        public int CalculateSeverity()
+        public int CalculateSeverity(Threat threat)
         {
             Dictionary<string, int> TargetValues = new Dictionary<string, int> { { "Web Server", 10 }, { "Database", 15 }, { "User Credentials", 20 } };
             int targetValue = TargetValues.TryGetValue(Target, out var value) == true ? value : 5;

@@ -43,10 +43,17 @@ namespace DefenceSystem
             {
                 Console.Write($", {node.Defenses[i]}");
             }
-            Console.WriteLine("|-- Left ");
-            PreOrderTraversal(node.Left);
-            Console.WriteLine("|-- Right ");
-            PreOrderTraversal(node.Right);
+            Console.WriteLine();
+            if (node.Left != null)
+            {
+                Console.Write("|-- Left ");
+                PreOrderTraversal(node.Left);
+            }
+            if (node.Right != null)
+            {
+                Console.Write("|-- Right ");
+                PreOrderTraversal(node.Right);
+            }
 
 
 
@@ -70,22 +77,18 @@ namespace DefenceSystem
         }
         public DefenceStrategiesNode FindDefence(DefenceStrategiesNode node, int severity)
         {
-
+            if (node == null)
+                return null;
             if (severity >= node.MinSeverity && severity <= node.MaxSeverity)
             {
                 return node;
             }
-            if (node.Left != null)
+            if (severity < node.MinSeverity)
             {
                 return FindDefence(node.Left, severity);
             }
-            if (node.Right != null)
-            {
-                return FindDefence(node.Right, severity);
-            } 
-            return null;
+            return FindDefence(node.Right, severity);
             
-
         }
 
         public int FindMin()

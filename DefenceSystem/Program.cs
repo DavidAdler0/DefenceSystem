@@ -6,17 +6,17 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        DefenceStrategiesBST tree = Service.InitalizeDefenceStrategiesBST();
         Console.WriteLine("initializing defence tree");
         Task.Delay(4000).Wait();
+        DefenceStrategiesBST tree = Service.InitalizeDefenceStrategiesBST();
 
-        tree.PrintDefenceStrategiesBST();
         Console.WriteLine("Printing Defence Strategies BST");
         Task.Delay(4000).Wait();
+        tree.PreOrderTraversal(tree.Root);
 
-        List<Threat> allThreats = Service.ReadThreats();
         Console.WriteLine("geting threats from json");
         Task.Delay(4000).Wait();
+        List<Threat> allThreats = Service.ReadThreats();
 
 
         foreach (Threat threat in allThreats)
